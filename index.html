@@ -83,10 +83,18 @@
 ಅಪ್ರತೀಕ್ಷಿತ, ಬಲಿಷ್ಠ ಮತ್ತು ಶಾಶ್ವತ.</p>
 
   </div>  <div class="audio-player">
-    <audio controls>
-      <source src="are-are-song.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+    
+    <audio id="bg-audio" preload="auto">
+        <source src="are-are-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
+
+    <script>
+      document.addEventListener('click', () => {
+        const audio = document.getElementById('bg-audio');
+        audio.play();
+      }, { once: true });
+    </script>
   </div>  <form action="https://formspree.io/f/mnqezwny" method="POST">
     <h2>Leave Your Wishes</h2>
     <input type="text" name="name" placeholder="Your Name" required />
