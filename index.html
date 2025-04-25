@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Wedding Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #fff5f8, #ffe6f0);
+      color: #4b2e2e;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-top: 1.5rem;
+    }
+    .countdown {
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+    .message {
+      margin: 2rem auto;
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      white-space: pre-line;
+      animation: fadeIn 3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .audio-player {
+      margin: 2rem auto;
+    }
+    form {
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.7rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #f77ca0;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e75480;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Counting Down to Forever</h1>
+  <div class="countdown" id="countdown"></div>  <div class="message">
+    <p><strong>English:</strong><br>
+    We met like any two strangers in the world, but every moment since has made it feel like destiny.
+    What started as an arranged bond turned into a love that hit us like a meteor — unexpected, powerful, and forever.</p><p><strong>Marathi:</strong><br>
+आपण एकमेकांना या जगातल्या दोन अनोळखी लोकांसारखं भेटलो,
+पण प्रत्येक क्षणाने हे नातं आपलं भाग्य वाटायला लागलं.
+जसं काही नियतीनंच आपल्याला एकत्र आणलं — जसं एखादा उल्कापिंड जमिनीवर आदळतो,
+तसंच हे प्रेम आपल्यावर आदळलं, अनपेक्षित, प्रबळ आणि कायमचं.</p>
+
+<p><strong>Kannada:</strong><br>
+ನಾವು ಈ ಲೋಕದಲ್ಲಿ ಇಬ್ಬರೂ ಅನ್ಯೋನ್ಯರಾಗಿಯೇ ಭೇಟಿಯಾದೆವು,
+ಆದರೆ ಪ್ರತಿ ಕ್ಷಣವೂ ಅದನ್ನು ವಿಧಿಯ ಹಾದಿಯೆಂದು ಅನಿಸಿತು.
+ಈ ಸಂಬಂಧ ವ್ಯವಸ್ಥಿತವಾಗಿ ಶುರುವಾಯಿತು ಆದರೆ ಪ್ರೇಮವು ಉಲ್ಕೆಯಂತೆ ನಮ್ಮ ಜೀವನದಲ್ಲಿ ಬಂದು ಬಿದ್ದಿತು —
+ಅಪ್ರತೀಕ್ಷಿತ, ಬಲಿಷ್ಠ ಮತ್ತು ಶಾಶ್ವತ.</p>
+
+  </div>  <div class="audio-player">
+    <audio controls>
+      <source src="are-are-song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>  <form action="https://formspree.io/f/mnqezwny" method="POST">
+    <h2>Leave Your Wishes</h2>
+    <input type="text" name="name" placeholder="Your Name" required />
+    <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+    <button type="submit">Send</button>
+  </form>  <footer>
+    Made with love by the groom | Hosted on GitHub Pages
+  </footer>  <script>
+    const countdown = document.getElementById('countdown');
+    const weddingDate = new Date("2025-05-06T12:06:00").getTime();
+
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(x);
+        countdown.innerHTML = "It's our big day!";
+      }
+    }, 1000);
+  </script></body>
+</html>
